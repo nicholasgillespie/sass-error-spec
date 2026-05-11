@@ -241,3 +241,5 @@ The five steps are combined to form the final structured string:
 ```
 
 > **Read as**: Token "font-weight", at settings > tier, has an invalid tier value "random" — set it to one of: primitive, semantic, or component.
+
+[Back to top](#error-message-authoring-specification)
