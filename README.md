@@ -6,8 +6,6 @@
 It is designed to be **mechanically precise** and **strictly actionable**.  
 Each error message communicates five things unambiguously:
 
-> **Reference implementation:** [`sass-error`](https://github.com/nicholasgillespie/sass-error) — Sass utility functions for building paths, printing values, and formatting options.
-
 1. **The violation** (Code)
 2. **The entity** (Entity)
 3. **The location** (Path)
@@ -17,6 +15,8 @@ Each error message communicates five things unambiguously:
 Errors are generated through a **[five-step construction process](#step-1-identify-the-failure-constraints)**.
 
 ---
+
+> **Reference implementation:** [`sass-error`](https://github.com/nicholasgillespie/sass-error) — Sass utility functions for building paths, printing values, and formatting options.
 
 ## The Structure of an Error
 
