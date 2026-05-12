@@ -14,9 +14,9 @@ Each error message communicates five things unambiguously:
 
 Errors are generated through a **[five-step construction process](#step-1-identify-the-failure-constraints)**.
 
----
-
 > **Reference implementation:** [`sass-error`](https://github.com/nicholasgillespie/sass-error) — Sass utility functions for building error messages.
+
+---
 
 ## The Structure of an Error
 
