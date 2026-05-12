@@ -135,16 +135,16 @@ To maintain predictability, generate human-readable strings strictly from these 
 
 | Constraint   | Issue Template               | Action Template             |
 | ------------ | ---------------------------- | --------------------------- |
-| `MISSING`    | `Missing <kind> "<attr>"`    | `Include "<attr>"`          |
-| `UNKNOWN`    | `Unknown <kind> "<attr>"`    | `Remove "<attr>"`           |
-| `FORBIDDEN`  | `Forbidden <kind> "<rcv>"`   | `Remove "<rcv>"`            |
-| `TYPE`       | `Incorrect type "<rcv>"`     | `Expected: <exp>`           |
-| `EMPTY`      | `Empty value`                | `Expected: non-empty <exp>` |
-| `INVALID`    | `Invalid value`              | `Expected: non-empty <exp>` |
-| `SHAPE`      | `Invalid shape "<rcv>"`      | `Expected: <exp>`           |
-| `VALUE`      | `Invalid <kind> "<rcv>"`     | `Allowed: <exp>`            |
-| `CONFLICT`   | `Conflicting <kind> "<rcv>"` | `Expected: <exp>`           |
-| `UNRESOLVED` | `Unresolved <kind> "<rcv>"`  | `Reference <exp>`           |
+| `MISSING`    | `Missing <kind> "<attribute>"`    | `Include "<attribute>"`          |
+| `UNKNOWN`    | `Unknown <kind> "<attribute>"`    | `Remove "<attribute>"`           |
+| `FORBIDDEN`  | `Forbidden <kind> "<received>"`   | `Remove "<received>"`            |
+| `TYPE`       | `Incorrect type "<received>"`     | `Expected: <expected>`           |
+| `EMPTY`      | `Empty value`                | `Expected: non-empty <expected>` |
+| `INVALID`    | `Invalid value`              | `Expected: non-empty <expected>` |
+| `SHAPE`      | `Invalid shape "<received>"`      | `Expected: <expected>`           |
+| `VALUE`      | `Invalid <kind> "<received>"`     | `Allowed: <expected>`            |
+| `CONFLICT`   | `Conflicting <kind> "<received>"` | `Expected: <expected>`           |
+| `UNRESOLVED` | `Unresolved <kind> "<received>"`  | `Reference <expected>`           |
 
 > **Note**: Actions are imperative (`Include`, `Remove`, etc.) when the fix is direct; declarative (`Expected`, `Allowed`) when it requires structural judgment.
 
@@ -156,9 +156,9 @@ Templates may be extended with specific patterns for complex scenarios:
 | --------------------------- | ------ | ------------------------------ | ------------------------------------------------------------ |
 | Dependency qualifier        | Issue  | `required for <kind> "<name>"` | `Missing attribute "width" required for feature "clamping"`  |
 | Scope qualifier             | Issue  | `in <scope>`                   | `Incorrect type "number" in list`                            |
-| Comparison target           | Issue  | `and "<rcv>"`                  | `Conflicting units "px" and "em"`                            |
-| Value type hint             | Action | `with value type: <exp>`       | `Include "tier" with value type: string`                     |
-| Parameter mapping           | Action | `as <param>`                   | `Include "mode" as $function-argument`                       |
+| Comparison target           | Issue  | `and "<received>"`                  | `Conflicting units "px" and "em"`                            |
+| Value type hint             | Action | `with value type: <expected>`       | `Include "tier" with value type: string`                     |
+| Parameter mapping           | Action | `as <parameter>`                   | `Include "mode" as $function-argument`                       |
 | Multiple corrective actions | Action | `or <alternative>`             | `Include "width" or register a viewport token under "<key>"` |
 
 > **Note:** Extensions must preserve the action type of their base template (imperative vs declarative) and must not introduce ambiguity in resolution.
@@ -166,12 +166,12 @@ Templates may be extended with specific patterns for complex scenarios:
 ### Placeholder Definitions
 
 - `<kind>` - Descriptive category label (e.g., `attribute`, `function`, `feature`, `setting`, `value`).
-- `<attr>` - Attribute name being validated.
-- `<rcv>` - Received value, type, or identifier.
-- `<exp>` - Expected type, allowed values, structural requirement, or valid resource.
+- `<attribute>` - Attribute name being validated.
+- `<received>` - Received value, type, or identifier.
+- `<expected>` - Expected type, allowed values, structural requirement, or valid resource.
 - `<name>` - Name of the external named entity referenced in a dependency qualifier (e.g., `"clamping"`, `"select-theme"`).
 - `<scope>` - Structural container providing positional context (e.g., `list`).
-- `<param>` - Sass function parameter name (e.g., `$function-argument`).
+- `<parameter>` - Sass function parameter name (e.g., `$function-argument`).
 - `<alternative>` - Full text of the alternative corrective action.
 - `<key>` - Registry entry identifier (e.g., a token key or named registry constant).
 
