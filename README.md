@@ -16,7 +16,7 @@ Errors are generated through a **[five-step construction process](#step-1-identi
 
 ---
 
-> **Reference implementation:** [`sass-error`](https://github.com/nicholasgillespie/sass-error) — Sass utility functions for building paths, printing values, and formatting options.
+> **Reference implementation:** [`sass-error`](https://github.com/nicholasgillespie/sass-error) — Sass utility functions for building error messages.
 
 ## The Structure of an Error
 
@@ -133,14 +133,14 @@ If the error occurs within a nested structure, provide a hierarchical breadcrumb
 
 To maintain predictability, generate human-readable strings strictly from these templates.
 
-| Constraint   | Issue Template               | Action Template             |
-| ------------ | ---------------------------- | --------------------------- |
+| Constraint   | Issue Template                    | Action Template                  |
+| ------------ | --------------------------------- | -------------------------------- |
 | `MISSING`    | `Missing <kind> "<attribute>"`    | `Include "<attribute>"`          |
 | `UNKNOWN`    | `Unknown <kind> "<attribute>"`    | `Remove "<attribute>"`           |
 | `FORBIDDEN`  | `Forbidden <kind> "<received>"`   | `Remove "<received>"`            |
 | `TYPE`       | `Incorrect type "<received>"`     | `Expected: <expected>`           |
-| `EMPTY`      | `Empty value`                | `Expected: non-empty <expected>` |
-| `INVALID`    | `Invalid value`              | `Expected: non-empty <expected>` |
+| `EMPTY`      | `Empty value`                     | `Expected: non-empty <expected>` |
+| `INVALID`    | `Invalid value`                   | `Expected: non-empty <expected>` |
 | `SHAPE`      | `Invalid shape "<received>"`      | `Expected: <expected>`           |
 | `VALUE`      | `Invalid <kind> "<received>"`     | `Allowed: <expected>`            |
 | `CONFLICT`   | `Conflicting <kind> "<received>"` | `Expected: <expected>`           |
@@ -156,9 +156,9 @@ Templates may be extended with specific patterns for complex scenarios:
 | --------------------------- | ------ | ------------------------------ | ------------------------------------------------------------ |
 | Dependency qualifier        | Issue  | `required for <kind> "<name>"` | `Missing attribute "width" required for feature "clamping"`  |
 | Scope qualifier             | Issue  | `in <scope>`                   | `Incorrect type "number" in list`                            |
-| Comparison target           | Issue  | `and "<received>"`                  | `Conflicting units "px" and "em"`                            |
-| Value type hint             | Action | `with value type: <expected>`       | `Include "tier" with value type: string`                     |
-| Parameter mapping           | Action | `as <parameter>`                   | `Include "mode" as $function-argument`                       |
+| Comparison target           | Issue  | `and "<received>"`             | `Conflicting units "px" and "em"`                            |
+| Value type hint             | Action | `with value type: <expected>`  | `Include "tier" with value type: string`                     |
+| Parameter mapping           | Action | `as <parameter>`               | `Include "mode" as $function-argument`                       |
 | Multiple corrective actions | Action | `or <alternative>`             | `Include "width" or register a viewport token under "<key>"` |
 
 > **Note:** Extensions must preserve the action type of their base template (imperative vs declarative) and must not introduce ambiguity in resolution.
