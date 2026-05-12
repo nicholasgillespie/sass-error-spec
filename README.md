@@ -1,4 +1,4 @@
-# Error Message Authoring Specification
+# Error Message Specification
 
 **Version:** 1.0.0  
 **Purpose:** This document defines the structure, semantics, and construction rules for error messages.
@@ -242,4 +242,4 @@ The five steps are combined to form the final structured string:
 
 > **Read as**: Token "font-weight", at settings > tier, has an invalid tier value "random" — set it to one of: primitive, semantic, or component.
 
-[Back to top](#error-message-authoring-specification)
+[Back to top](#error-message-specification)
